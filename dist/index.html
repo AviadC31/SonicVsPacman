@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonic Vs Pacman</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Black+Ops+One' rel='stylesheet' type='text/css'>
+</head>
+
+<body onload="loadPage()">
+
+    <div id="playNow"></div>
+        
+    <div class="scoreBoard">
+        <div class="score"></div>
+        <script id="scoreTemplate" type="text/x-handlebars-template">
+            <div class="team">
+                <span><img class="character" src="https://pngimg.com/uploads/pacman/pacman_PNG89.png">{{data.player1}}</span>
+                <span>-{{data.player2}}<img class="character" src="https://info.sonicretro.org/images/7/71/Unleashed_sonic.jpg"></span>
+            </div>
+        </script>
+    </div>
+
+    <div class="matrixBoard">
+        <div class="board"></div>
+        <script id="boardTemplate" type="text/x-handlebars-template">
+            {{#each data}}
+                <ul class="matrix">
+                    {{#each this}}
+                        <li class="cell"> <img src="{{ this }}"></li>
+                    {{/each}}
+                </ul>
+            {{/each}}
+        </script>
+    </div>
+
+
+        <script>
+            var audio = new Audio('./sounds/sonic.mp3' ) 
+        </script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="jquery/dist/jquery.js"></script>
+        <script src="handlebars/dist/handlebars.js"></script>
+        <script src="jquery/dist/jquery.js"></script>
+        <script src="Matrix.js"></script>
+        <script src="GoldRush.js"></script>
+        <script src="Renderer.js"></script>
+        <script src="main.js"></script>
+</body>
+
+</html>
