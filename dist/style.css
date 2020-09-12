@@ -46,12 +46,12 @@ background-attachment: fixed;
 
 .cell{
     width: 100%;
-    background: rgba(255, 255, 255, 0.774);
+    background: rgba(255, 255, 255, 0.603);
     display: flex;
     justify-content: center;
     align-items: center;
     border-color:black;
-    border-width: 1px;
+    border-width: 0.1px;
     border-style: groove;
 }
 .matrix{
@@ -104,8 +104,6 @@ img{
     background-color: #000000
 }
   
-
-
 
 @-webkit-keyframes animacao1 { 0% {background: #D62623;}
 							   50% {background: #EE3430;}
@@ -271,3 +269,53 @@ img{
 		animation-timing-function:  linear;
 		animation-iteration-count: infinite;
 		animation-direction: alternate;}
+ 
+		ul {
+			margin-top:4em;
+			padding: 0;
+			list-style-type: none;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+		}
+		
+		ul li {
+			box-sizing: border-box;
+			width: 15em;
+			height: 3em;
+			font-size: 20px;
+			border-radius: 0.5em;
+			margin: 0.5em;
+			box-shadow: 0 0 1em rgba(160, 0, 0, 0.2);
+			color: rgb(201, 5, 5);
+			font-family: sans-serif;
+			text-transform: capitalize;
+			line-height: 3em;
+			transition: 0.3s;
+			cursor: pointer;
+		}
+		
+		ul li:nth-child(odd) {
+			background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+			text-align: left;
+			padding-left: 10%;
+			transform: perspective(500px) rotateY(45deg);
+		}
+		
+		ul li:nth-child(even) {
+			background: linear-gradient(to left,rgb(0, 0, 0), rgb(0, 0, 0));
+			text-align: right;
+			padding-right: 10%;
+			transform: perspective(500px) rotateY(-45deg);
+		}
+		
+		ul li:nth-child(odd):hover {
+			transform: perspective(200px) rotateY(45deg);
+			padding-left: 5%;
+		}
+		
+		ul li:nth-child(even):hover {
+			transform: perspective(200px) rotateY(-45deg);
+			padding-right: 5%;
+		}

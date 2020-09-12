@@ -11,8 +11,16 @@
 
 <body onload="loadPage()">
 
+    <span>
+        <ul id="options">
+            <li id="multiplayer">MultiPlayer</li>
+            <li id="singleplayer">Single Game</li>
+        </ul>
+    </span>
+
     <div id="playNow"></div>
-        
+
+
     <div class="scoreBoard">
         <div class="score"></div>
         <script id="scoreTemplate" type="text/x-handlebars-template">
@@ -27,27 +35,27 @@
         <div class="board"></div>
         <script id="boardTemplate" type="text/x-handlebars-template">
             {{#each data}}
-                <ul class="matrix">
+                <div class="matrix">
                     {{#each this}}
-                        <li class="cell"> <img src="{{ this }}"></li>
+                        <div class="cell"> <img src="{{ this }}"></div>
                     {{/each}}
-                </ul>
+                </div>
             {{/each}}
         </script>
     </div>
 
 
-        <script>
-            var audio = new Audio('./sounds/sonic.mp3' ) 
-        </script>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="jquery/dist/jquery.js"></script>
-        <script src="handlebars/dist/handlebars.js"></script>
-        <script src="jquery/dist/jquery.js"></script>
-        <script src="Matrix.js"></script>
-        <script src="GoldRush.js"></script>
-        <script src="Renderer.js"></script>
-        <script src="main.js"></script>
+    <script>
+        var audio = new Audio('./sounds/sonic.mp3') 
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="handlebars/dist/handlebars.js"></script>
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="Matrix.js"></script>
+    <script src="GoldRush.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

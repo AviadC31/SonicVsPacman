@@ -1,23 +1,23 @@
 class GoldRush extends Matrix {
     constructor() {
         super()
-        this.lastPlayer = 0
         this.score = { player1: 0, player2: 0 }
-        this.c = `./gifs/${Math.floor(10 * Math.random())}.gif`
-        this.p = 'https://i.stack.imgur.com/Vkq2a.png'
-        this.a = './gifs/pacmanPlayer.gif'
-        this.w = './pics/10.jpg'
+        this.coin = `./gifs/4.gif`
+        this.point = 'https://i.stack.imgur.com/Vkq2a.png'
+        this.player1 = './gifs/pacmanPlayer.gif'
+        this.wall = './pics/9.jpg'
     }
-
+    // ${Math.floor(10 * Math.random())}
+    // axios.get('https://localhost:3000/api/randomCoin')
     generateMatrix = (rows, cols) => {
         for (let r = 0; r < rows; r++) {
             this.matrix.push([])
             for (let c = 0; c < cols; c++) {
                 const random = Math.floor(100 * Math.random())
-                if (random < 60) this.matrix[r].push(this.p)
+                if (random < 60) this.matrix[r].push(this.point)
                 else
-                if (random < 90) this.matrix[r].push(this.c)
-                else this.matrix[r].push(this.w)
+                if (random < 90) this.matrix[r].push(this.coin)
+                else this.matrix[r].push(this.wall)
             }
         }
         return this.matrix
@@ -38,15 +38,15 @@ class GoldRush extends Matrix {
             case 'right': if (this.movingAndScoring(x, y + 1, player)) return
                 break
         }
-        this.alter(x, y, this.p)
+        this.alter(x, y, this.point)
     }
 
     movingAndScoring = (x, y, player) => {
         if (!this.matrix[x]) return true
-        if (this.matrix[x][y] == this.c) {
-            if (player == this.a) this.score.player1 += 10
+        if (this.matrix[x][y] === this.coin) {
+            if (player === this.player1) this.score.player1 += 10
             else this.score.player2 += 10
-        } else if (this.matrix[x][y] !== this.p) return true
+        } else if (this.matrix[x][y] !== this.point) return true
         this.alter(x, y, player)
     }
 }
