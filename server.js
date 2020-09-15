@@ -97,9 +97,9 @@ app.use(express.static(path.join(__dirname, 'node_modules')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/api/randomCoin', function (req, res) {
-    res.send(randomCoin)
-})
-
-server.listen(3000, () => console.log(`Running server on port 3000`))
+// app.get('/api/randomCoin', function (req, res) {
+//     res.send(randomCoin)
+// })
+const port = process.env.PORT || 8000;
+server.listen(port, () => console.log(`Running server on port 8000`))
 
