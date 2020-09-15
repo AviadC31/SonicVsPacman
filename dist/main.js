@@ -3,7 +3,7 @@ const playerB = './gifs/sonicPlayer.gif'
 const renderer = new Renderer()
 const socket = io()
 
-loadnewGame = () => location.reload(true)
+loadnewGame = () => location.reload()
 
 displayBoard = () => {
 
@@ -73,7 +73,7 @@ loadPage = () => {
                 renderer.render(multiBoard.matrix, 'board')
             })
 
-            $(document).keypress(function (e) {
+            $(document).on("keypress",function (e) {
                multiGameOver(player)
                 socket.on('winnerIs', winnerIs => {
                     // console.log(winnerIs)
@@ -88,14 +88,14 @@ loadPage = () => {
                         return
                     })
                 // }
-                switch (e.which) {
-                    case 119: board.movePlayer(player === 'host' ? playerA : playerB, "up")
+                switch (e.key) {
+                    case 'w': board.movePlayer(player === 'host' ? playerA : playerB, "up")
                         break
-                    case 115: board.movePlayer(player === 'host' ? playerA : playerB, "down")
+                    case 's': board.movePlayer(player === 'host' ? playerA : playerB, "down")
                         break
-                    case 97: board.movePlayer(player === 'host' ? playerA : playerB, "left")
+                    case 'a': board.movePlayer(player === 'host' ? playerA : playerB, "left")
                         break
-                    case 100: board.movePlayer(player === 'host' ? playerA : playerB, "right")
+                    case 'd': board.movePlayer(player === 'host' ? playerA : playerB, "right")
                         break
                 }
 
@@ -119,7 +119,7 @@ loadPage = () => {
 
             displayBoard()
 
-            $(document).keypress(function (e) {
+            $(document).on("keypress",function (e) {
 
                 const winner = gameOver()
 
@@ -129,22 +129,22 @@ loadPage = () => {
                     renderer.appendBody(winner)
                     return
                 }
-                switch (e.which) {
-                    case 119: board.movePlayer(playerA, "up")
+                switch (e.key) {
+                    case 'w': board.movePlayer(playerA, "up")
                         break
-                    case 115: board.movePlayer(playerA, "down")
+                    case 's': board.movePlayer(playerA, "down")
                         break
-                    case 97: board.movePlayer(playerA, "left")
+                    case 'a': board.movePlayer(playerA, "left")
                         break
-                    case 100: board.movePlayer(playerA, "right")
+                    case 'd': board.movePlayer(playerA, "right")
                         break
-                    case 105: board.movePlayer(playerB, "up")
+                    case '8': board.movePlayer(playerB, "up")
                         break
-                    case 107: board.movePlayer(playerB, "down")
+                    case '5': board.movePlayer(playerB, "down")
                         break
-                    case 106: board.movePlayer(playerB, "left")
+                    case '4': board.movePlayer(playerB, "left")
                         break
-                    case 108: board.movePlayer(playerB, "right")
+                    case '6': board.movePlayer(playerB, "right")
                         break
                 }
 
